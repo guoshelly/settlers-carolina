@@ -11,8 +11,9 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "sockets": "0.4.2",
-    "express": "4.13.3"
+    "express": "4.13.3",
+    "socket.io": "^1.7.1",
+    "sockets": "0.4.2"
   },
   "repository": {
     "type": "git",
