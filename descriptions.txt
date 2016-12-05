@@ -1,0 +1,73 @@
+SERVER SIDE THOUGHTS
+4 Players 
+Board w/ Updates
+	Roads, colleges, universities, robber
+Current dice roll 
+Player cards
+Do we want is turn column on player?
+
+
+
+GENERAL INFORMATION 
+
+Other Player General Information
+	Current points
+	On turn or not on turn
+	Avatar/name/player color
+	
+Own Player General Information 
+	Cards
+	Buying options 
+	Current points
+	Turn/not
+	Avatar/name/player color
+	
+On Turn
+	Roll dice
+		if(not 7) - distribute resources 
+		if(7) - deal with robber
+	Allow for trading & buying
+	Allow placement
+	Move to next turn
+	
+End game - 10 victory points 
+
+Board in middle, generate first
+3-4 players on corners
+
+TAR HEEL VERSION
+
+5 Resources, 5 places to get the resources 
+1. Sheep = Ram - Field
+2. Wheat = Ramen - Dining Hall
+3. Bricks = Bricks - Walkways
+4. Rocks = Basketballs - Dean Dome
+5. Wood = Books - Libraries
+
+Road = Road
+Settlement = Dorm
+City = Campus
+
+DEV CARDS
+
+14 Knights
+5 VP Cards
+2 Each of the Specific Ones (6 total)
+25 total dev cards
+
+Robber = Blue Devil
+Knights = Carol Folt (temp)
+
+Ports = Bus Stop
+
+5 Development Cards VP
+1. Old Well
+2. The Pit
+3. Davis Library
+4. Sitterson 
+5. Bell Tower 
+
+Specific Development Cards
+1. Road Building = Road Building
+2. Year of Plenty = Volunteered for Medical Research
+3. Monopoly = Monopoly 

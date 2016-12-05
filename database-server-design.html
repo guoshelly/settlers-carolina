@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Ubuntu" />
+        <style>
+            @font-face {
+                font-family: Ubuntu;
+            }
+
+            body {
+                font-family: Ubuntu;
+            }
+
+            table {
+                border-collapse: separate;
+                border-spacing: 20px 0;
+                border-style: solid;
+                border: 2px solid black;
+                margin: 0 auto;
+                border-radius: 10px;
+            }
+
+            .container {
+                background-color: #66B9BF;
+                width: 500px;
+                height: 1000px;
+                border-radius: 25px;
+                position: relative;
+                float: left;
+            }
+
+            th, td {
+                padding: 4px;
+            }
+
+            th {
+                text-decoration: underline;
+                text-transform: uppercase;
+            }
+
+            h1 {
+                color: #F1F1EF;
+                text-align: center;
+            }
+
+            h2 {
+                text-align: center;
+            }
+
+            ul {
+                list-style-type: none;
+            }
+
+            ul.innerList {
+                list-style-type: square;
+            }
+
+            code {
+                font-size: 14px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class = "container">
+            <h1> Database Schema</h1>
+
+            <p>
+                We have five unique tables for our Settlers of Carolina game.
+                All tables, of course, contain an ID column.
+                The first one, the Players table, contains four unique
+                columns, Username, RoadsCount, SoldiersCount, and Points.
+                The second table, called Roads, contains PlayerID and another column called Available.
+                The third table, called Tiles, contains only a column named Robber.
+                The fourth table, called Colleges, contains PlayerID, Available,
+                and University. The last table, called Cards, contains Ram,
+                Ramen, Brick, Basketball, Book, Knight, OldWell, ThePit,
+                DavisLibrary, Sitterson, BellTower, Roads, Volunteer, Monopoly.
+            </p>
+
+            <code>
+                <ul>
+                    <li>Players</li>
+                    <ul class = "innerList">
+                        <li>PlayerID: INT, primary key, auto-increment</li>
+                        <li>Username: VARCHAR(50), username of the user</li>
+                        <li>RoadsCount: INT, the number of roads owned</li>
+                        <li>SoldiersCount: INT, the number of soldiers owned</li>
+                        <li>Points: INT, the number of victory points a player has</li>
+                    </ul>
+
+                    <br />
+
+                    <li> Roads</li>
+                    <ul class = "innerList">
+                        <li>RoadsID: INT, primary key, auto-increment</li>
+                        <li>PlayerID: INT, foreign key to Players ID</li>
+                        <li>Available: INT, the number of available roads</li>
+                    </ul>
+
+                    <br />
+
+                    <li> Tiles</li>
+                    <ul class = "innerList">
+                        <li>TilesID: INT, primary key, auto-increment</li>
+                        <li>Robber: INT, which tile the robber is on</li>
+                    </ul>
+
+                    <br />
+
+                    <li>Colleges</li>
+                    <ul class = "innerList">
+                        <li>CollegeID: INT, primary key, auto-increment</li>
+                        <li>PlayerID: INT, foreign key to Players ID</li>
+                        <li>Available: INT, the number of available colleges</li>
+                        <li>University: INT, keeps track of the universities</li>
+                    </ul>
+
+                    <br />
+
+                    <li>Cards</li>
+                    <ul class = "innerList">
+                        <li>CardsID: INT, primary key, auto-increment</li>
+                        <li>PlayerID: INT, foreign key to Players ID</li>
+                        <li>Ram: INT, the number of Ram cards</li>
+                        <li>Ramen: INT, the number of Ramen cards</li>
+                        <li>Brick: INT, the number of Brick cards</li>
+                        <li>Basketball: INT, the number of basketball cards</li>
+                        <li>Book: INT, the number of book cards</li>
+                        <li>Knight:INT, the number of knight cards</li>
+                        <li>OldWell: INT, the number of Old Well cards</li>
+                        <li>ThePit: INT, the number of The Pit cards</li>
+                        <li>DavisLibrary: INT, the number of library cards</li>
+                        <li>Sitterson: INT, the number of Sitterson cards</li>
+                        <li>BellTower: INT, the number of Bell Tower cards</li>
+                        <li>Roads: INT, the number of road cards</li>
+                        <li>Volunteer: INT, the number of volunteer cards</li>
+                        <li>Monopoly: INT, the number of monopoly cards</li>
+                    </ul>
+                </ul>
+            </code>
+
+            <h2> Players Table</h2>
+            <p>
+                The Username column holds the username specified by the user
+                at the beginning of the game. RoadsCount keeps track of the
+                number of roads built by a player and SoldiersCount keeps
+                track of the number of Knight development cards played by a
+                user. These are important because there is a longest road
+                development card and largest army development card which give
+                two victory points to the person with the longest road or
+                played the most knights, respectively. Points keeps track of the
+                number of the victory points the player has and the player that
+                reaches ten victory points first wins.
+            </p>
+
+            <h2> Roads Table</h2>
+            <p>
+                The PlayerID column is a foreign key to the Players table.
+                The Available column is used to check whether the road is
+                available because you can't build a road next to a settlement
+                you don't own.
+            </p>
+
+            <h2> Tiles Table </h2>
+            <p>
+                Robber just keeps track of which tile the robber is on.
+            </p>
+
+            <h2> Colleges Table</h2>
+            <p>
+                The PlayerID is a foreign key that points to the Players table.
+                Available column is used to check whether the college is available
+                because you can't build a college if there is no space for it.
+                University keeps tracks of the universities.
+            </p>
+
+            <h2> Cards Table</h2>
+            <p>
+                The Cards Table keeps track of the cards a given player has.
+                The specific cards mentioned are the possible cards the player
+                has.
+            </p>
+        </div>
+
+        <div class = "container" style = "left: 25px;">
+            <h1> Server-Side API</h1>
+
+            <h2>ORM Layer</h2>
+            <p>
+                Our project includes an ORM file that contains a couple of classes
+                to account for the various tables from the database. In particular,
+                these classes are: Card, College, Road, Tile, and Players. The
+                Database Schema to the left explains the specific function of
+                each class, since the classes themselves are a reference to the
+                tables in our database.
+            </p>
+
+            <p>
+                The ORM classes contain object-oriented functions and instance
+                variables, including private and static functions. For instance,
+                they provide private variables that hold the values of all
+                columns from the SQL tables. Two specific functions, create()
+                and connect(), have special uses. The first one, create(), is
+                used to create an instance of the class. The connect() function
+                is used to make a connection to the SQL database and returns a
+                reference to the mysqli object. Another function, called
+                getJSON(), returns a json encoded representation of the class.
+                This function is important because it is the basis for server-client
+                AJAX communication.
+            </p>
+
+            <h2> HTTP and AJAX</h2>
+            <p>
+                For our project, we are implementing GET and POST. The GET
+                request is used to obtain a specific value from a particular table
+                in the SQL database. The POST request is used to create/update
+                information on a table. The GET/POST parameters vary by ORM class, so
+                we will have to list them by class.
+            </p>
+
+            <table>
+                <tr>
+                    <th>Class</th>
+                    <th>GET Parameters</th>
+                    <th>POST Parameters</th>
+                </tr>
+                <tr>
+                    <td>Players</td>
+                    <td> id, Username, RoadsCount, SoldiersCount, Points</td>
+                    <td> id, Username, RoadsCount, SoldiersCount, Points</td>
+                </tr>
+                <tr>
+                    <td> Roads</td>
+                    <td> id, PlayerID, Available</td>
+                    <td> id, PlayerID, Available</td>
+                </tr>
+                <tr>
+                    <td> Tiles</td>
+                    <td>id, Robber</td>
+                    <td>id, Robber</td>
+                </tr>
+                <tr>
+                    <td>Colleges</td>
+                    <td> id, PlayerID, Available, University</td>
+                    <td> id, PlayerID, Available, University</td>
+                </tr>
+                <tr>
+                    <td>Cards</td>
+                    <td>id, Ram, Ramen, Brick, Basketball, Book, Knight, OldWell,
+                        ThePit, DavisLibrary, Sitterson, BellTower, Roads, Volunteer,
+                        Monopoly
+                    </td>
+                    <td>id, Ram, Ramen, Brick, Basketball, Book, Knight, OldWell,
+                        ThePit, DavisLibrary, Sitterson, BellTower, Roads, Volunteer,
+                        Monopoly
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

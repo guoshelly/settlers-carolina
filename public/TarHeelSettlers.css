@@ -1,0 +1,205 @@
+body {
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+#top_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#col_one {
+    display: flex;
+    width: 25%;
+    flex-direction: column;
+}
+
+#col_two {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+}
+
+#col_three {
+    display: flex;
+    width: 25%;
+    flex-direction: column;
+}
+
+#player_one {
+    float: left;
+    height: 75%;
+    border: 1pt solid black;
+    background-color: #07889B;
+    overflow: auto;
+}
+
+#player_two {
+    float: right;
+    height: 20%;
+    border: 1pt solid black;
+    background-color: #E37222;
+}
+
+#player_three {
+    float: left;
+    height: 20%;
+    border: 1pt solid black;
+    background-color: #EEAA7B;
+}
+
+#player_four {
+    float: right;
+    height: 20%;
+    border: 1pt solid black;
+    background-color: #66B9BF;
+}
+
+#chat-box {
+  height: 35%;
+  border: 1pt solid black;
+  background-color: #FFAABB;
+  overflow: scroll;
+}
+
+#chat-form{ 
+    height: 5%;
+    position: fixed; 
+    width: 50%;
+    bottom: 10px; 
+    }
+form input {  
+    padding: 10px; 
+    width: 35%; 
+    margin-right: .5%; }
+form button { 
+    width: 8%; 
+    background: 
+    rgb(130, 224, 255); 
+    border: none; 
+    padding: 10px; 
+}
+#messages { 
+    list-style-type: none; 
+    margin: 0; 
+    padding: 0; 
+}
+#messages li { 
+    padding: 5px 10px; 
+}
+#messages li:nth-child(odd) { 
+    background: #eee; 
+}
+
+#buying_info{
+  height: 25%;
+  border: 1pt solid black;
+  background-color: #FFAABB;
+  overflow: scroll;
+}
+
+
+#board {
+    height: 552px;
+    border: 1pt solid black;
+    overflow: auto;
+    text-align: center;
+}
+
+#turn_info {
+    border: 1pt solid black;
+    height: 51px;
+    text-align: center;
+    background-color: #E37222;
+}
+
+#turn_panel {
+    border: 1pt solid black;
+    height: 125px;
+    text-align: center;
+    background-color: #F1F1EF;
+   
+}
+
+#player_one_cards td {
+    font-size: 10px;
+}
+
+/* General card dimensions */
+.cards {
+    width: 40px;
+    height: 80px;
+    border-radius: 10px;
+    display: inline-block;
+    background-color: white;
+}
+
+/* Specifies the image dimensions inside
+the cards */
+.cards img {
+    width: 40px;
+    height: 80px;
+}
+
+/* Resource cards */
+
+.rameses {
+    border: 1px solid #5E90BB;
+}
+
+.bricks {
+    border: 1px solid #A39B96;
+}
+
+.basketballs {
+    border: 1px solid #B25F4E;
+}
+
+.ramen {
+    border: 1px solid #794B38;
+}
+
+.books {
+    border: 1px solid #6B9FCE;
+}
+
+/* Development cards */
+.folt {
+    border: 1px solid #C7C8CA;
+}
+
+.devil {
+    border: 1px solid blue;
+}
+
+.well {
+    border: 1px solid gray;
+}
+
+.pit {
+    border: 1px solid brown;
+}
+
+.davis {
+    border: 1px solid #99775D;
+}
+
+.sitterson {
+    border: 1px solid #7E615A;
+}
+
+.bell {
+    border: 1px solid #A06E53;
+}
+
+.roadBuilding {
+    border: 1px solid #54524A;
+}
+
+.volunteer {
+    border: 1px solid #54524A;
+}
+
+.monopoly {
+    border: 1px solid #B1322F;
+}

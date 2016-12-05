@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Settlers of Carolina</title>
+    <!--JQuery -->
+    <script src="http://www.cs.unc.edu/Courses/comp426-f16/jquery-3.1.0.js"></script>
+    <link rel="preload" as="image" href="images/desert.jpg">
+    <link rel="preload" as="image" href="images/paper.jpg">
+    <link rel="preload" as="image" href="images/pasta.jpg">
+    <link rel="preload" as="image" href="images/mountain.jpg">
+    <link rel="preload" as="image" href="images/brickwall.jpg">
+    <link rel="preload" as="image" href="images/field.jpg">
+    <!-- Socket -->
+    <script src="/socket.io/socket.io.js"></script>
+
+    <!-- External JavaScript -->
+    <script src="TarHeelSettlers.js"></script>
+    <!-- External CSS -->
+    <link rel="stylesheet" type="text/css" href="TarHeelSettlers.css">
+  <!-- Board drawing -->
+	<script src="Game.js"></script>
+	<script src="Board.js"></script>
+</head>
+
+<body>
+	<div id="top_container">
+		<div id="col_one">
+			<div id="player_one" class="players">
+        <table id="player_one_cards">
+          <th colspan=5> Resource Cards </th>
+          <tr align="center"> <td width=65> <div class="cards rameses"> <img src = "images/rameses.gif" /> </div> </td>
+               <td width=65> <div class="cards bricks"> <img src ="images/bricks.gif" /> </div> </td>
+               <td width=65> <div class="cards basketballs"> <img src="images/basketball.gif" /> </div> </td>
+               <td width=65> <div class="cards ramen"> <img src="images/ramen.gif" /> </div> </td>
+               <td width=65> <div class="cards books"> <img src="images/book.gif" /> </div> </td>
+          </tr>
+          <tr align="center">
+             <td> Rams </td>
+             <td> Bricks </td>
+             <td> Basketballs </td>
+             <td> Ramen </td>
+             <td> Books </td>
+          </tr>
+          <tr align="center">
+             <td id="player_one_ram_cards"> 0 </td>
+             <td id="player_one_brick_cards"> 0 </td>
+             <td id="player_one_basketball_cards"> 0 </td>
+             <td id="player_one_ramen_cards"> 0 </td>
+             <td id="player_one_book_cards"> 0 </td> </tr>
+          <th colspan=5> Development Cards </th>
+          <tr align="center">
+            <td> <div class ="cards folt"> <img src="images/folt.gif" /> </div> </td>
+            <td> <div class="cards roadBuilding"> <img src="images/roadBuilding.gif" /> </div> </td>
+            <td> <div class="cards volunteer"> <img src="images/volunteer.gif" /> </div> </td>
+            <td> <div class="cards monopoly"> <img src="images/monopoly.gif" /> </div> </td>
+            <td></td>
+          </tr>
+          <tr align="center">
+             <td> Knight </td>
+             <td> Roads </td>
+             <td> Volunteering </td>
+             <td> Monopoly </td>
+             <td>  </td>
+          </tr>
+          <tr align="center">
+             <td id="player_one_knight_cards"> 0 </td>
+             <td id="player_one_road_cards"> 0 </td>
+             <td id="player_one_volunteer_cards"> 0 </td>
+             <td id="player_one_monopoly_cards"> 0 </td>
+             <td> </td>
+          </tr>
+          <th colspan=5> Victory Point Cards </th>
+          <tr align="center">
+            <td> <div class="cards well"> <img src="images/well.gif" /> </div> </td>
+            <td> <div class="cards pit"> <img src="images/pit.gif" /> </div> </td>
+            <td> <div class="cards davis"> <img src="images/davis.gif" /> </div> </td>
+            <td> <div class="cards sitterson"> <img src="images/sitterson.gif" /> </div> </td>
+            <td> <div class="cards bell"> <img src="images/bell.gif" /> </div> </td>
+          </tr>
+          <tr align="center">
+             <td> Old Well </td>
+             <td> The Pit </td>
+             <td> Davis </td>
+             <td> Sitterson </td>
+             <td> Bell Tower </td>
+          </tr>
+          <tr align="center">
+             <td id="player_one_well_cards"> 0 </td>
+             <td id="player_one_pit_cards"> 0 </td>
+             <td id="player_one_davis_cards"> 0 </td>
+             <td id="player_one_sitterson_cards"> 0 </td>
+             <td id="player_ones_bell_cards"> 0 </td>
+          </tr>
+        </table>
+        <div id="player_one_points"> Points: 0 </div><br>
+        <div id="player_one_special"> Special Points: None </div>
+			</div>
+      <div id="buying_info">
+        <table>
+            <tr><th colspan="2">Building Costs</th></tr>
+            <tr><td>Road</td><td>Brick, Book</td></tr>
+            <tr><td>College</td><td>Brick, Book, Ramen, Ram</td></tr>
+            <tr><td>University</td><td>2 Ramen, 3 Basketballs</td></tr>
+            <tr><td>Development Card</td><td>Ram, Ramen, Basketball</td></tr>
+        </table>
+      </div>
+		</div>
+		<div id="col_two">
+			<div id="board">
+				<canvas id="board_canvas">
+			</div>
+			<div id="turn_info">Currently Player 2's Turn!<br>Dice Roll: 6</div>
+        <div id="turn_panel">
+    Turn Panel<br>
+    Do you want to trade? <button type="button">Trade</button><br>
+    Do you want to buy? <button type="button">Buy</button><br>
+    Turn over? <button id = "turn-button" type="button">Yes</button><br>
+      <script>
+            var socket = io();
+           $("#turn-button").click(function() {
+                    socket.emit('turn event' ,"Turn Over!");
+                    alert("Turn Over");           
+            });
+            socket.on('turn event', function(msg){
+              alert(msg);
+            });
+        </script>
+
+  </div>
+		</div>
+		<div id="col_three">
+			<div id="player_two" class="players">
+				<b>Player Two</b><br>
+        <div id="player_two_num_cards">Cards: 0 </div>
+        <div id="player_two_points">Known Points: 0 </div>
+        <div id="player_two_special">Special Points: None </div>
+			</div>
+      <div id="player_three" class="players">
+        <b>Player Three</b><br>
+        <div id="player_three_num_cards">Cards: 0 </div>
+        <div id="player_three_points">Known Points: 0 </div>
+        <div id="player_three_special">Special Points: None </div>
+			</div>
+			<div id="player_four" class="players">
+        <b>Player Four</b><br>
+        <div id="player_four_num_cards">Cards: 0 </div>
+        <div id="player_four_points">Known Points: 0 </div>
+        <div id="player_four_special">Special Points: None </div>
+      </div>
+      <div id="chat-box">
+        <ul id="messages"> </ul>
+        <div id = "form-box">
+        <form id ="chat-form" action="">
+          <input id = "m" autocomplete="off">
+          <button>Send</button>
+        </form>
+        </div>
+         <script>
+            
+            $('form').submit(function(){
+              socket.emit('chat message', $('#m').val());
+              $('#m').val('');
+              return false;
+            });
+            socket.on('chat message', function(msg){
+              $('#messages').append($('<li>').text(msg));
+            });
+        </script>
+        
+      </div>
+    </div>
+	</div>
+
+
+</body>
+
+</html>

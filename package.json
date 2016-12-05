@@ -1,0 +1,27 @@
+{
+  "name": "stuff",
+  "version": "0.0.0",
+  "description": "Settlers",
+  "engines": {
+    "node": "6.9.1",
+    "npm": "3.10.8"
+  },
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "sockets": "0.4.2",
+    "express": "4.13.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guoshelly/FinalProject426.git"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
+}
