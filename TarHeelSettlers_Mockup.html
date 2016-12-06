@@ -29,6 +29,7 @@
 			<div id="player_one" class="players">
         <table id="player_one_cards">
           <th colspan=5> Resource Cards </th>
+
           <tr align="center"> <td width=65> <div class="cards rameses"> <img src = "images/rameses.gif" /> </div> </td>
                <td width=65> <div class="cards bricks"> <img src ="images/bricks.gif" /> </div> </td>
                <td width=65> <div class="cards basketballs"> <img src="images/basketball.gif" /> </div> </td>
@@ -116,16 +117,30 @@
     Do you want to trade? <button type="button">Trade</button><br>
     Do you want to buy? <button type="button">Buy</button><br>
     Turn over? <button id = "turn-button" type="button">Yes</button><br>
-      <script>
-            var socket = io();
-           $("#turn-button").click(function() {
-                    socket.emit('turn event' ,"Turn Over!");
-                    alert("Turn Over");           
-            });
-            socket.on('turn event', function(msg){
-              alert(msg);
-            });
-        </script>
+
+    <script>
+      var socket = io();
+      $("#turn-button").click(function() {
+        socket.emit('turn event' ,"Turn Over!");
+        alert("Turn Over"); 
+        $.ajax({url: "SettlersOfCarolina.php/Players/1",
+          type: "GET",
+          dataType: "json",
+          success: function(Player_json, status, jqXHR){
+            alert(print_r(Player_json, true));
+          },
+          error: function(jqXHR, status, error){
+            alert("Error");
+          }
+
+        });    
+
+      });
+      socket.on('turn event', function(msg){
+        alert(msg);
+        
+      });
+    </script>
 
   </div>
 		</div>
@@ -171,6 +186,9 @@
       </div>
     </div>
 	</div>
+        <script>
+ 
+      </script>
 
 
 </body>
